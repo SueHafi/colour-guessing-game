@@ -1,0 +1,36 @@
+body {
+    width: 100%;
+}
+
+.main-container {
+    width: 80%;
+    margin: auto;
+}
+.container {
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.item {
+    background-color:blueviolet;
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+}
+
+.gameOptionsButtons {
+    display: flex;
+    gap: 60px;
+}
+
+.resetButton {
+    justify-self: flex-start;
+}
+
+.gameDifficultyContainer {
+    display: flex;
+    gap: 20px;
+}
