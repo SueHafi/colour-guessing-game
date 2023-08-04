@@ -9,21 +9,21 @@
   <body>
     <div class="mainContainer">
       <h1 class="title">Colour Guessing Game</h1>
-      <h2 class="RGBNumber">RGB(0,0,0)</h2>
+      <h2 data-id="RBG-Number">RGB(0,0,0)</h2>
       <section class="gameOptionsButtons">
-        <button class="resetButton">New Colours</button>
+        <button class="resetButton" data-id="reset-button">New Colours</button>
         <div class="gameDifficultyContainer">
-          <button class="easyMode">Easy</button>
-          <button class="hardMode">Hard</button>
+          <button data-id="easy-mode">Easy</button>
+          <button data-id="hard-mode">Hard</button>
         </div>
       </section>
       <div class="container">
-        <div class="item colour1"></div>
-        <div class="item colour2"></div>
-        <div class="item colour3"></div>
-        <div class="item colour4"></div>
-        <div class="item colour5"></div>
-        <div class="item colour6"></div>
+        <div class="item" data-id="colour-0"></div>
+        <div class="item" data-id="colour-1"></div>
+        <div class="item" data-id="colour-2"></div>
+        <div class="item" data-id="colour-3"></div>
+        <div class="item" data-id="colour-4"></div>
+        <div class="item" data-id="colour-5"></div>
       </div>
     </div>
     <script src="script.js" defer></script>
