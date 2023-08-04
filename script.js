@@ -1,8 +1,6 @@
 let colourNum = "";
+let winningBlockNum = 0;
 colourChange();
-console.log(colourNum)
-
-//handling winning and losing blocks
 
 //switching to easy mode
 document.querySelector('[data-id="easy-mode"]').addEventListener("click", switchToEasyMode);
@@ -31,22 +29,26 @@ function resetButtonClick() {
   return colourChange();
 }
 
+//randomize winning block
 function colourChange() {
-  document.querySelector(`[data-id="colour-0"]`);
-  document.querySelector('[data-id="colour-0"]').style.backgroundColor =
+  winningNum();
+  calculatewinningBlock();
+  document.querySelector(`[data-id="colour-${winningBlockNum}"]`).style.backgroundColor = colourNum;
+  for(let i = 0; i < 6; i++) {
+    if(i === winningBlockNum) {
+      continue;
+    } else {
+  document.querySelector(`[data-id="colour-${i}"]`).style.backgroundColor =
     returnRandomColour();
-  document.querySelector('[data-id="colour-1"]').style.backgroundColor =
-    returnRandomColour();
-  document.querySelector('[data-id="colour-2"]').style.backgroundColor =
-    returnRandomColour();
-  document.querySelector('[data-id="colour-3"]').style.backgroundColor =
-    returnRandomColour();
-  document.querySelector('[data-id="colour-4"]').style.backgroundColor =
-    returnRandomColour();
-  document.querySelector('[data-id="colour-5"]').style.backgroundColor =
-    returnRandomColour();
+  }
+  }
+  
 }
 
+function calculatewinningBlock() {
+  winningBlockNum = Math.trunc(Math.random()*6);
+  return winningBlockNum;
+}
 function winningNum() {
   const randomNum = [];
   for (let i = 0; i < 3; i++) {
@@ -67,7 +69,8 @@ function returnRandomColour() {
   return result;
 }
 
-//randomize winning block
+
+//handling winning and losing blocks
 //handle win and loss clicks
 //find a way to randomize where the winning square colour is displayed
 //remember you do not need to randomize all of them only swapping
