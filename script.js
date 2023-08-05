@@ -2,8 +2,28 @@ let colourNum = "";
 let winningBlockNum = 0;
 colourChange();
 
+//handle how to reset winning and losing blocks change visibility back
+
+const colourContainerDiv = document.querySelector(
+  '[data-id="colour-container"]'
+);
+colourContainerDiv.addEventListener("click", handleBlockClicked);
+
+function handleBlockClicked(event) {
+  if (event.target === colourContainerDiv.children[winningBlockNum]) {
+    for (let i = 0; i < 6; i++) {
+      document.querySelector(`[data-id="colour-${i}"]`).style.backgroundColor =
+        colourNum;
+    }
+  } else {
+    event.target.style.visibility = "hidden";
+  }
+}
+
 //switching to easy mode
-document.querySelector('[data-id="easy-mode"]').addEventListener("click", switchToEasyMode);
+document
+  .querySelector('[data-id="easy-mode"]')
+  .addEventListener("click", switchToEasyMode);
 
 function switchToEasyMode() {
   document.querySelector('[data-id="colour-3"]').style.display = "none";
@@ -12,7 +32,9 @@ function switchToEasyMode() {
 }
 
 //switching to hard mode
-document.querySelector('[data-id="hard-mode"]').addEventListener("click", switchToHardMode);
+document
+  .querySelector('[data-id="hard-mode"]')
+  .addEventListener("click", switchToHardMode);
 
 function switchToHardMode() {
   document.querySelector('[data-id="colour-3"]').style.display = "block";
@@ -33,20 +55,21 @@ function resetButtonClick() {
 function colourChange() {
   winningNum();
   calculatewinningBlock();
-  document.querySelector(`[data-id="colour-${winningBlockNum}"]`).style.backgroundColor = colourNum;
-  for(let i = 0; i < 6; i++) {
-    if(i === winningBlockNum) {
+  document.querySelector(
+    `[data-id="colour-${winningBlockNum}"]`
+  ).style.backgroundColor = colourNum;
+  for (let i = 0; i < 6; i++) {
+    if (i === winningBlockNum) {
       continue;
     } else {
-  document.querySelector(`[data-id="colour-${i}"]`).style.backgroundColor =
-    returnRandomColour();
+      document.querySelector(`[data-id="colour-${i}"]`).style.backgroundColor =
+        returnRandomColour();
+    }
   }
-  }
-  
 }
 
 function calculatewinningBlock() {
-  winningBlockNum = Math.trunc(Math.random()*6);
+  winningBlockNum = Math.trunc(Math.random() * 6);
   return winningBlockNum;
 }
 function winningNum() {
@@ -69,10 +92,6 @@ function returnRandomColour() {
   return result;
 }
 
-
-//handling winning and losing blocks
-//handle win and loss clicks
-//find a way to randomize where the winning square colour is displayed
+//handle win and loss blocks
 //remember you do not need to randomize all of them only swapping
 //the winning square with one other square placement is enough
-//make sure to implement wrong and correct guesses (winning-losing clicks, guesses)
