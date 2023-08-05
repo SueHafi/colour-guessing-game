@@ -1,8 +1,11 @@
 let colourNum = "";
 let winningBlockNum = 0;
 colourChange();
+let hasWon = false;
 
-//handle how to reset winning and losing blocks change visibility back
+//after winning the game should end all button functionality
+//hard and easy mode button should not work anymore
+//the text for newcolours should change to "play again"
 
 const colourContainerDiv = document.querySelector(
   '[data-id="colour-container"]'
@@ -12,8 +15,11 @@ colourContainerDiv.addEventListener("click", handleBlockClicked);
 function handleBlockClicked(event) {
   if (event.target === colourContainerDiv.children[winningBlockNum]) {
     for (let i = 0; i < 6; i++) {
+      document.querySelector(`[data-id="colour-${i}"]`).style.visibility =
+        "visible";
       document.querySelector(`[data-id="colour-${i}"]`).style.backgroundColor =
         colourNum;
+      hasWon = true;
     }
   } else {
     event.target.style.visibility = "hidden";
@@ -48,6 +54,10 @@ document
   .addEventListener("click", resetButtonClick);
 
 function resetButtonClick() {
+  for (let i = 0; i < 6; i++) {
+    document.querySelector(`[data-id="colour-${i}"]`).style.visibility =
+      "visible";
+  }
   return colourChange();
 }
 
