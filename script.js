@@ -1,18 +1,22 @@
 let colourNum = "";
 let winningBlockNum = 0;
-colourChange();
 let hasWon = false;
+let easyMode = false;
+let hardMode = true;
+colourChange();
 
 //after winning the game should end all button functionality
 //hard and easy mode button should not work anymore
 //the text for newcolours should change to "play again"
-
 const colourContainerDiv = document.querySelector(
   '[data-id="colour-container"]'
 );
 colourContainerDiv.addEventListener("click", handleBlockClicked);
 
 function handleBlockClicked(event) {
+  if (hasWon) {
+    return;
+  }
   if (event.target === colourContainerDiv.children[winningBlockNum]) {
     for (let i = 0; i < 6; i++) {
       document.querySelector(`[data-id="colour-${i}"]`).style.visibility =
@@ -32,6 +36,9 @@ document
   .addEventListener("click", switchToEasyMode);
 
 function switchToEasyMode() {
+  hardMode = false;
+  easyMode = true;
+  colourChange();
   document.querySelector('[data-id="colour-3"]').style.display = "none";
   document.querySelector('[data-id="colour-4"]').style.display = "none";
   document.querySelector('[data-id="colour-5"]').style.display = "none";
@@ -43,6 +50,9 @@ document
   .addEventListener("click", switchToHardMode);
 
 function switchToHardMode() {
+  easyMode = false;
+  hardMode = true;
+  colourChange();
   document.querySelector('[data-id="colour-3"]').style.display = "block";
   document.querySelector('[data-id="colour-4"]').style.display = "block";
   document.querySelector('[data-id="colour-5"]').style.display = "block";
@@ -54,6 +64,7 @@ document
   .addEventListener("click", resetButtonClick);
 
 function resetButtonClick() {
+  hasWon = false;
   for (let i = 0; i < 6; i++) {
     document.querySelector(`[data-id="colour-${i}"]`).style.visibility =
       "visible";
@@ -65,16 +76,21 @@ function resetButtonClick() {
 function colourChange() {
   winningNum();
   calculatewinningBlock();
-  document.querySelector(
-    `[data-id="colour-${winningBlockNum}"]`
-  ).style.backgroundColor = colourNum;
-  for (let i = 0; i < 6; i++) {
-    if (i === winningBlockNum) {
-      continue;
-    } else {
-      document.querySelector(`[data-id="colour-${i}"]`).style.backgroundColor =
-        returnRandomColour();
+  if (hardMode) {
+    document.querySelector(
+      `[data-id="colour-${winningBlockNum}"]`
+    ).style.backgroundColor = colourNum;
+    for (let i = 0; i < 6; i++) {
+      if (i === winningBlockNum) {
+        continue;
+      } else {
+        document.querySelector(
+          `[data-id="colour-${i}"]`
+        ).style.backgroundColor = returnRandomColour();
+      }
     }
+  } else if (easyMode) {
+    // handle this etch case
   }
 }
 
