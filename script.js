@@ -5,9 +5,7 @@ let easyMode = false;
 let hardMode = true;
 colourChange();
 
-//after winning the game should end all button functionality
-//hard and easy mode button should not work anymore
-//the text for newcolours should change to "play again"
+//the text for newcolours should change to "play again" when player has won
 const colourContainerDiv = document.querySelector(
   '[data-id="colour-container"]'
 );
@@ -24,6 +22,7 @@ function handleBlockClicked(event) {
       document.querySelector(`[data-id="colour-${i}"]`).style.backgroundColor =
         colourNum;
       hasWon = true;
+      resetButton.textContent = 'Play Again?';
     }
   } else {
     event.target.style.visibility = "hidden";
@@ -36,6 +35,7 @@ document
   .addEventListener("click", switchToEasyMode);
 
 function switchToEasyMode() {
+  hasWon = false;
   hardMode = false;
   easyMode = true;
   colourChange();
@@ -50,6 +50,7 @@ document
   .addEventListener("click", switchToHardMode);
 
 function switchToHardMode() {
+  hasWon = false;
   easyMode = false;
   hardMode = true;
   colourChange();
@@ -59,12 +60,13 @@ function switchToHardMode() {
 }
 
 //clicking reset button
-document
-  .querySelector('[data-id="reset-button"]')
-  .addEventListener("click", resetButtonClick);
+const resetButton = document
+  .querySelector('[data-id="reset-button"]');
+  resetButton.addEventListener("click", resetButtonClick);
 
 function resetButtonClick() {
   hasWon = false;
+  resetButton.textContent = 'New Colours';
   for (let i = 0; i < 6; i++) {
     document.querySelector(`[data-id="colour-${i}"]`).style.visibility =
       "visible";
@@ -90,14 +92,30 @@ function colourChange() {
       }
     }
   } else if (easyMode) {
-    // handle this etch case
+    document.querySelector(
+      `[data-id="colour-${winningBlockNum}"]`
+    ).style.backgroundColor = colourNum;
+    for (let i = 0; i < 3; i++) {
+      if (i === winningBlockNum) {
+        continue;
+      } else {
+        document.querySelector(
+          `[data-id="colour-${i}"]`
+        ).style.backgroundColor = returnRandomColour();
+      }
+    }
   }
 }
 
 function calculatewinningBlock() {
+  if(easyMode) {
+  winningBlockNum = Math.trunc(Math.random() * 3);
+} else {
   winningBlockNum = Math.trunc(Math.random() * 6);
   return winningBlockNum;
 }
+}
+
 function winningNum() {
   const randomNum = [];
   for (let i = 0; i < 3; i++) {
