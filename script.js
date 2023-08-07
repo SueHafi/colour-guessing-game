@@ -5,7 +5,6 @@ let easyMode = false;
 let hardMode = true;
 colourChange();
 
-//the text for newcolours should change to "play again" when player has won
 const colourContainerDiv = document.querySelector(
   '[data-id="colour-container"]'
 );
@@ -35,6 +34,7 @@ document
   .addEventListener("click", switchToEasyMode);
 
 function switchToEasyMode() {
+  resetButton.textContent = 'New Colours';
   hasWon = false;
   hardMode = false;
   easyMode = true;
@@ -50,6 +50,7 @@ document
   .addEventListener("click", switchToHardMode);
 
 function switchToHardMode() {
+  resetButton.textContent = 'New Colours';
   hasWon = false;
   easyMode = false;
   hardMode = true;
@@ -135,7 +136,3 @@ function returnRandomColour() {
   const result = `RGB(${randomNumbers.join(",")})`;
   return result;
 }
-
-//handle win and loss blocks
-//remember you do not need to randomize all of them only swapping
-//the winning square with one other square placement is enough

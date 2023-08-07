@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="styles.css" rel="stylesheet" />
+    <script src="./script.js" defer></script>
+    <link href="./styles.css" rel="stylesheet" />
     <title>Colour Guessing Game</title>
   </head>
   <body>
+    <section class="header-section">
+    <h1 class="title">Colour Guessing Game</h1>
+    <h2 data-id="RBG-Number">RGB(0,0,0)</h2>
     <div class="mainContainer">
-      <h1 class="title">Colour Guessing Game</h1>
-      <h2 data-id="RBG-Number">RGB(0,0,0)</h2>
       <section class="gameOptionsButtons">
         <button class="resetButton" data-id="reset-button">New Colours</button>
         <div class="gameDifficultyContainer">
@@ -17,6 +19,7 @@
           <button data-id="hard-mode">Hard</button>
         </div>
       </section>
+    </section>
       <div class="container" data-id="colour-container">
         <div class="item" data-id="colour-0"></div>
         <div class="item" data-id="colour-1"></div>
@@ -26,6 +29,5 @@
         <div class="item" data-id="colour-5"></div>
       </div>
     </div>
-    <script src="script.js" defer></script>
   </body>
 </html>
