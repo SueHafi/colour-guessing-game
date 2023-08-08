@@ -1,8 +1,7 @@
 let colourNum = "";
 let winningBlockNum = 0;
 let hasWon = false;
-let easyMode = false;
-let hardMode = true;
+let isHardMode = true;
 const RGBNum = document.querySelector('[data-id="RBG-Number"]');
 const colourContainerDiv = document.querySelector(
   '[data-id="colour-container"]'
@@ -40,8 +39,7 @@ function handleBlockClicked(event) {
 function switchToEasyMode() {
   resetButton.textContent = "New Colours";
   hasWon = false;
-  hardMode = false;
-  easyMode = true;
+  isHardMode = false;
   colourChange();
   arrayOfBlockColours[3].style.display = "none";
   arrayOfBlockColours[4].style.display = "none";
@@ -53,8 +51,7 @@ function switchToEasyMode() {
 function switchToHardMode() {
   resetButton.textContent = "New Colours";
   hasWon = false;
-  easyMode = false;
-  hardMode = true;
+  isHardMode = true;
   colourChange();
   arrayOfBlockColours[3].style.display = "block";
   arrayOfBlockColours[4].style.display = "block";
@@ -76,21 +73,17 @@ function resetButtonClick() {
 function colourChange() {
   winningNum();
   calculatewinningBlock();
-  if (hardMode) {
+  if (isHardMode) {
     arrayOfBlockColours[winningBlockNum].style.backgroundColor = colourNum;
     for (let i = 0; i < 6; i++) {
-      if (i === winningBlockNum) {
-        continue;
-      } else {
+      if (i !== winningBlockNum) {
         arrayOfBlockColours[i].style.backgroundColor = returnRandomColour();
       }
     }
-  } else if (easyMode) {
+  } else {
     arrayOfBlockColours[winningBlockNum].style.backgroundColor = colourNum;
     for (let i = 0; i < 3; i++) {
-      if (i === winningBlockNum) {
-        continue;
-      } else {
+      if (i !== winningBlockNum) {
         arrayOfBlockColours[i].style.backgroundColor = returnRandomColour();
       }
     }
@@ -98,11 +91,11 @@ function colourChange() {
 }
 
 function calculatewinningBlock() {
-  if (easyMode) {
-    winningBlockNum = Math.trunc(Math.random() * 3);
-  } else {
+  if (isHardMode) {
     winningBlockNum = Math.trunc(Math.random() * 6);
     return winningBlockNum;
+  } else {
+    winningBlockNum = Math.trunc(Math.random() * 3);
   }
 }
 
