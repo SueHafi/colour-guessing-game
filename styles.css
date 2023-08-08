@@ -12,9 +12,9 @@ body {
 }
 
 .container {
-    width: 40%;
-    display: flex;
-    flex-wrap: wrap;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
     margin: auto;
