@@ -8,6 +8,7 @@ const RGBNum = document.querySelector('[data-id="RBG-Number"]');
 const colourContainerDiv = document.querySelector(
   '[data-id="colour-container"]'
 );
+const header = document.querySelector('[data-id = "header"]');
 const arrayOfBlockColours = colourContainerDiv.children;
 const easyModeBtn = document.querySelector('[data-id="easy-mode"]');
 const hardModeBtn = document.querySelector('[data-id="hard-mode"]');
@@ -30,6 +31,7 @@ function handleBlockClicked(event) {
       arrayOfBlockColours[i].style.backgroundColor = colourNum;
       hasWon = true;
       resetButton.textContent = "Play Again?";
+      header.style.backgroundColor = `${colourNum}`;
     }
   } else {
     event.target.style.visibility = "hidden";
@@ -42,7 +44,7 @@ function switchToEasyMode() {
   arrayOfBlockColours[3].style.display = "none";
   arrayOfBlockColours[4].style.display = "none";
   arrayOfBlockColours[5].style.display = "none";
-
+  toggleDifficultySelected();
   startNewGame();
 }
 
@@ -52,19 +54,31 @@ function switchToHardMode() {
   arrayOfBlockColours[3].style.display = "block";
   arrayOfBlockColours[4].style.display = "block";
   arrayOfBlockColours[5].style.display = "block";
-
+  toggleDifficultySelected();
   startNewGame();
+}
+
+function toggleDifficultySelected() {
+  if (isHardMode) {
+    hardModeBtn.classList.add("btn--active");
+    easyModeBtn.classList.remove("btn--active");
+  } else {
+    hardModeBtn.classList.remove("btn--active");
+    easyModeBtn.classList.add("btn--active");
+  }
 }
 
 function startNewGame() {
   hasWon = false;
+  header.style.backgroundColor = "#aa0555";
   resetButton.textContent = "New Colours";
   for (let i = 0; i < 6; i++) {
     arrayOfBlockColours[i].style.visibility = "visible";
   }
 
-  winningNum();
-  calculatewinningBlock();
+  colourNum = returnRandomColour();
+  RGBNum.textContent = colourNum;
+  randomizeWinningBlockNum();
   arrayOfBlockColours[winningBlockNum].style.backgroundColor = colourNum;
   for (let i = 0; i < blockCount; i++) {
     if (i !== winningBlockNum) {
@@ -73,13 +87,8 @@ function startNewGame() {
   }
 }
 
-function calculatewinningBlock() {
+function randomizeWinningBlockNum() {
   winningBlockNum = Math.trunc(Math.random() * blockCount);
-}
-
-function winningNum() {
-  colourNum = returnRandomColour();
-  RGBNum.textContent = colourNum;
 }
 
 function returnRandomColour() {
@@ -87,7 +96,7 @@ function returnRandomColour() {
   for (let i = 0; i < 3; i++) {
     randomNumbers.push(Math.floor(Math.random() * 256));
   }
-  const result = `RGB(${randomNumbers.join(",")})`;
+  const result = `RGB(${randomNumbers.join(", ")})`;
 
   return result;
 }

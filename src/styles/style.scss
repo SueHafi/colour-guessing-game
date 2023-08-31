@@ -1,14 +1,10 @@
-@import "./_base";
-@import "./_header";
-@import "./_items";
-
-.container {
-  padding: 0 2rem;
-}
+@import "./base";
+@import "./header";
+@import "./items";
+@import "./footer";
 
 .controls-bar {
   background-color: aliceblue;
-  padding: 0.5rem 0;
 }
 
 .controls-container {
@@ -21,6 +17,17 @@
 .btn {
   border: none;
   background-color: aliceblue;
+  padding: 0.5rem;
+  color: #aa0555;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn:hover,
+.btn--active {
+  background-color: #aa0555;
+  color: aliceblue;
+  cursor: pointer;
 }
 
 .difficulty-controls-container {
@@ -31,5 +38,9 @@
 @media (min-width: 768px) {
   .controls-container {
     max-width: 60rem;
+  }
+
+  .btn {
+    font-size: 2rem;
   }
 }
