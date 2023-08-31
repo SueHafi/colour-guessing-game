@@ -1,0 +1,29 @@
+.item-container {
+  display: grid;
+  max-width: 60rem;
+  grid-template-columns: repeat(auto-fit, 15rem);
+  grid-auto-rows: 15rem;
+  gap: 1.5rem;
+  margin: 1.5rem auto;
+  justify-content: center;
+}
+
+.item {
+  background-color: blueviolet;
+  border-radius: 1.5rem;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .item-container {
+    max-width: unset;
+    grid-template-columns: repeat(3, 20rem);
+    grid-template-rows: repeat(2, 20rem);
+    gap: 2rem;
+    margin: 2rem auto;
+  }
+
+  .item {
+    border-radius: 3rem;
+  }
+}

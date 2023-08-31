@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  background-color: #041014;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+}

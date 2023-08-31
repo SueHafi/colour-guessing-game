@@ -7,25 +7,31 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="title">Colour Guessing Game</h1>
-      <p class="rgb-num" data-id="RBG-Number">RGB(0,0,0)</p>
+      <div class="container">
+        <h1 class="title">Colour Guessing Game</h1>
+        <p class="rgb-num" data-id="RBG-Number">RGB(0,0,0)</p>
+      </div>
     </header>
     <div class="controls-bar">
-      <div class="controls-container">
-        <button class="btn" data-id="reset-button">New Colours</button>
-        <div class="difficulty-controls-container">
-          <button class="btn" data-id="easy-mode">Easy</button>
-          <button class="btn" data-id="hard-mode">Hard</button>
+      <div class="container">
+        <div class="controls-container">
+          <button class="btn" data-id="reset-button">New Colours</button>
+          <div class="difficulty-controls-container">
+            <button class="btn" data-id="easy-mode">Easy</button>
+            <button class="btn" data-id="hard-mode">Hard</button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="item-container" data-id="colour-container">
-      <div class="item" data-id="colour-0"></div>
-      <div class="item" data-id="colour-1"></div>
-      <div class="item" data-id="colour-2"></div>
-      <div class="item" data-id="colour-3"></div>
-      <div class="item" data-id="colour-4"></div>
-      <div class="item" data-id="colour-5"></div>
+    <div class="container">
+      <div class="item-container" data-id="colour-container">
+        <button class="item" data-id="colour-0" aria-label="colour 1"></button>
+        <button class="item" data-id="colour-1" aria-label="colour 2"></button>
+        <button class="item" data-id="colour-2" aria-label="colour 3"></button>
+        <button class="item" data-id="colour-3" aria-label="colour 4"></button>
+        <button class="item" data-id="colour-4" aria-label="colour 5"></button>
+        <button class="item" data-id="colour-5" aria-label="colour 6"></button>
+      </div>
     </div>
     <script type="module" src="/main.js"></script>
   </body>
