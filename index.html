@@ -8,24 +8,26 @@
     <title>Colour Guessing Game</title>
   </head>
   <body>
-    <section class="header-section">
-    <h1 class="title">Colour Guessing Game</h1>
-    <h2 class="rgb-num" data-id="RBG-Number">RGB(0,0,0)</h2>
-    </section>
-    <section class="gameOptionsButtons">
-      <button class="resetButton" data-id="reset-button">New Colours</button>
-      <div class="gameDifficultyContainer">
-        <button class="easy-mode-btn" data-id="easy-mode">Easy</button>
-        <button class="hard-mode-btn" data-id="hard-mode">Hard</button>
+    <header class="header">
+      <h1 class="title">Colour Guessing Game</h1>
+      <p class="rgb-num" data-id="RBG-Number">RGB(0,0,0)</p>
+    </header>
+    <div class="controls-bar">
+      <div class="controls-container">
+        <button class="btn" data-id="reset-button">New Colours</button>
+        <div class="difficulty-controls-container">
+          <button class="btn" data-id="easy-mode">Easy</button>
+          <button class="btn" data-id="hard-mode">Hard</button>
+        </div>
       </div>
-    </section>
-      <div class="container" data-id="colour-container">
-        <div class="item" data-id="colour-0"></div>
-        <div class="item" data-id="colour-1"></div>
-        <div class="item" data-id="colour-2"></div>
-        <div class="item" data-id="colour-3"></div>
-        <div class="item" data-id="colour-4"></div>
-        <div class="item" data-id="colour-5"></div>
-      </div>
+    </div>
+    <div class="item-container" data-id="colour-container">
+      <div class="item" data-id="colour-0"></div>
+      <div class="item" data-id="colour-1"></div>
+      <div class="item" data-id="colour-2"></div>
+      <div class="item" data-id="colour-3"></div>
+      <div class="item" data-id="colour-4"></div>
+      <div class="item" data-id="colour-5"></div>
+    </div>
   </body>
 </html>

@@ -24,7 +24,7 @@ function handleBlockClicked(event) {
     return;
   }
   if (event.target === colourContainerDiv.children[winningBlockNum]) {
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < blockCount; i++) {
       arrayOfBlockColours[i].style.visibility = "visible";
       arrayOfBlockColours[i].style.backgroundColor = colourNum;
       hasWon = true;
@@ -79,7 +79,6 @@ function calculatewinningBlock() {
 function winningNum() {
   colourNum = returnRandomColour();
   RGBNum.textContent = colourNum;
-  return result;
 }
 
 function returnRandomColour() {
