@@ -1,3 +1,4 @@
+import "./style.css";
 let colourNum = "";
 let winningBlockNum = 0;
 let hasWon = false;
