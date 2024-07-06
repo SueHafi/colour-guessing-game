@@ -34,6 +34,7 @@ function handleBlockClicked(event) {
       header.style.backgroundColor = `${colourNum}`;
     }
   } else {
+  
     event.target.style.visibility = "hidden";
   }
 }
